@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="slideshow-container">
+        <!-- Slide 1 - New intro slide -->
+        <div class="slide active intro-slide">
+            <div class="slide-content">
+                <h1>Setjum útsendara af stað</h1>
+            </div>
+        </div>
+
+        <!-- Slide 2 - Hero slide -->
+        <div class="slide hero-slide">
+            <div class="slide-content">
+                <h1>Kynning á GitHub Copilot Pro og öðrum verkfærum tengdum gervigreind </h1>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide about-slide">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <h1>Hver er ég?</h1>
+                <ul class="bullet-list">
+                    <li class="bullet-item" data-index="0">Ellert Smári Kristbergsson</li>
+                    <li class="bullet-item" data-index="0">Tölvukennari með 10+ ára reynslu</li>
+                    <li class="bullet-item" data-index="1">Sérstakur áhugamaður um gervigreind og vélanám</li>
+                    <li class="bullet-item" data-index="2">Einn af stofnendum ICAI (saga)</li>
+                    <li class="bullet-item" data-index="3">Stjórnarmaður í FTK í mörg ár</li>
+                    <li class="bullet-item" data-index="4">Virkur þáttakandi í ITiCSE ráðstefnunni í tvö ár</li>
+                    <li class="bullet-item" data-index="4">Brautarstjórn Framendaforritunarbrautar H.I. í Stokkhólmi</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 4 - Check on broadcaster -->
+        <div class="slide broadcaster-check-slide">
+            <div class="slide-content">
+                <h1>Skoðum hvernig útsendaranum gengur</h1>
+            </div>
+        </div>
+
+        <!-- Slide 5 - ITiCSE slide -->
+        <div class="slide iticse-slide">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <h1>Helstu niðurstöður úr ITiCSE, Stærstu tölvukennararáðstefnu Evrópu 2025</h1>
+                
+                <div class="iticse-layout">
+                    <!-- Left side - Papers -->
+                    <div class="papers-section">
+                        <h2>Helstu rannsóknir:</h2>
+                        <div class="papers-list" style="display: none;">
+                            <div class="paper-item">
+                                <h3>Keynote-ið hennar Inge Molenaar var meðal annars um gervigreind</h3>
+                                <p>Human-AI Collaboration in Education: The Hybrid Future</p>
+                            </div>
+                            <div class="paper-item">
+                                <h3>Hugmyndir grunnskólabarna oft manngerðar</h3>
+                                <p>What Ideas and Questions Do 3rd and 4th Graders Have about AI? — Vo et al.</p>
+                            </div>
+                            <div class="paper-item">
+                                <h3>Háskólanemendur finna fyrir aukinni framleiðni en hafa áhyggjur af því að reiða sig of mikið á AI</h3>
+                                <p>Student’s Use of Generative AI as a Support Tool in an Advanced Web Development Course — Alpízar-Chacón & Keuning</p>
+                            </div>
+                            <div class="paper-item">
+                                <h3>Auðvelt að búa til sérsniðin verkefni en erfitt að mæla gæði þeirra</h3>
+                                <p>Unlimited Practice Opportunities: Automated Generation of Comprehensive, Personalized Programming Tasks — Jacobs et al</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right side - Results -->
+                    <div class="results-section">
+                        <h2>Lykilniðurstöður:</h2>
+                        <ul class="results-list">
+                            <li class="result-item" data-index="0">Gervigreind nýtist vel við verkefna- og námsefnisgerð</li>
+                            <li class="result-item" data-index="1">Nýtist illa við námsmat en hefur þó verið reynt</li>
+                            <li class="result-item" data-index="2">Nýtist þó vel við undirbúning námsmats og gerð námsáætlana</li>
+                            <li class="result-item" data-index="3">Gervigreindar samlokan - manneskja byrjar og endar ferlið</li>
+                            <li class="result-item" data-index="4">Persónuvernd og viðkvæm gögn</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6 - Check broadcaster again -->
+        <div class="slide broadcaster-check2-slide">
+            <div class="slide-content">
+                <h1>Kíkjum nú aftur á útsendarann</h1>
+            </div>
+        </div>
+
+        <!-- Slide 7 - Final slide -->
+        <div class="slide final-slide">
+            <div class="slide-content">
+                <h1>Niðurstöður</h1>
+                <video class="final-video" controls autoplay muted loop>
+                    <source src="pictures/Generated video 1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <!-- Navigation indicators -->
+        <div class="slide-indicators">
+            <span class="indicator active" data-slide="0"></span>
+            <span class="indicator" data-slide="1"></span>
+            <span class="indicator" data-slide="2"></span>
+            <span class="indicator" data-slide="3"></span>
+            <span class="indicator" data-slide="4"></span>
+            <span class="indicator" data-slide="5"></span>
+            <span class="indicator" data-slide="6"></span>
+        </div>
+
+        <!-- Slide counter -->
+        <div class="slide-counter">
+            <span id="current-slide">1</span> / <span id="total-slides">7</span>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        let currentBulletIndex = -1;
+        let currentResultIndex = -1;
+        let papersShown = false;
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            // Wrap around if necessary
+            if (n >= totalSlides) currentSlide = 0;
+            if (n < 0) currentSlide = totalSlides - 1;
+            
+            // Show current slide
+            slides[currentSlide].classList.add('active');
+            indicators[currentSlide].classList.add('active');
+            
+            // Reset bullet animations when changing slides
+            resetBulletAnimations();
+            
+            // Update counter
+            document.getElementById('current-slide').textContent = currentSlide + 1;
+        }
+
+        function resetBulletAnimations() {
+            const bulletItems = document.querySelectorAll('.bullet-item');
+            bulletItems.forEach(item => item.classList.remove('visible'));
+            
+            const resultItems = document.querySelectorAll('.result-item');
+            resultItems.forEach(item => item.classList.remove('visible'));
+            
+            const papersList = document.querySelector('.papers-list');
+            if (papersList) papersList.classList.remove('visible');
+            
+            currentBulletIndex = -1;
+            currentResultIndex = -1;
+            papersShown = false;
+        }
+
+        function showNextBullet() {
+            const currentSlideElement = slides[currentSlide];
+            const bulletItems = currentSlideElement.querySelectorAll('.bullet-item');
+            
+            if (currentBulletIndex < bulletItems.length - 1) {
+                currentBulletIndex++;
+                bulletItems[currentBulletIndex].classList.add('visible');
+                return true; // Bullet was shown
+            }
+            return false; // No more bullets
+        }
+
+        function showNextResult() {
+            const currentSlideElement = slides[currentSlide];
+            const resultItems = currentSlideElement.querySelectorAll('.result-item');
+            
+            if (currentResultIndex < resultItems.length - 1) {
+                currentResultIndex++;
+                resultItems[currentResultIndex].classList.add('visible');
+                return true; // Result was shown
+            }
+            return false; // No more results
+        }
+
+        function showPapers() {
+            const papersList = document.querySelector('.papers-list');
+            if (papersList && !papersShown) {
+                papersList.style.display = 'block';
+                setTimeout(() => {
+                    papersList.classList.add('visible');
+                }, 100);
+                papersShown = true;
+                return true;
+            }
+            return false;
+        }
+
+        function nextSlide() {
+            // If we're on slide 3 (about slide) and there are bullets to show
+            if (currentSlide === 2) {
+                const bulletShown = showNextBullet();
+                if (bulletShown) {
+                    return; // Stay on current slide, just showed a bullet
+                }
+            }
+            
+            // If we're on slide 5 (ITiCSE slide)
+            if (currentSlide === 4) {
+                // First, show papers if not shown
+                if (!papersShown) {
+                    showPapers();
+                    return;
+                }
+                // Then show results one by one
+                const resultShown = showNextResult();
+                if (resultShown) {
+                    return; // Stay on current slide, just showed a result
+                }
+            }
+            
+            // Move to next slide
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'Home') {
+                currentSlide = 0;
+                showSlide(currentSlide);
+            } else if (e.key === 'End') {
+                currentSlide = totalSlides - 1;
+                showSlide(currentSlide);
+            }
+        });
+
+        // Click navigation on indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
+        // Initialize
+        document.getElementById('total-slides').textContent = totalSlides;
+    </script>
+</body>
+</html>

@@ -1,0 +1,483 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden; /* Prevent scrolling */
+    background: #1a1a1a;
+    color: white;
+    font-size: 25px;
+}
+
+/* Slideshow container */
+.slideshow-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Individual slides */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease-in-out;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Active slide */
+.slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Slide content */
+.slide-content {
+    text-align: center;
+    max-width: 80%;
+    padding: 2rem;
+}
+
+.slide-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.slide-content p {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Slide images */
+.slide-image {
+    max-width: 60%;
+    max-height: 60vh;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    margin-top: 2rem;
+}
+
+/* Image grid for multiple images */
+.image-grid {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.image-grid img {
+    max-width: 300px;
+    max-height: 40vh;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* IMPORTANT NOTE: SLIDESHOW POSITIONING RULES
+ * 
+ * DO NOT add "position: relative" to individual slide classes (.hero-slide, .about-slide, .iticse-slide, etc.)
+ * 
+ * WHY: The slideshow system uses position: absolute on .slide elements to stack them properly.
+ * Adding position: relative to specific slide classes interferes with this stacking and causes:
+ * - Slides to appear black/not visible
+ * - Layout issues where slides take up extra space
+ * - Incorrect slide transitions
+ * 
+ * CORRECT APPROACH:
+ * - Only use position: relative on child elements INSIDE the slide content if needed
+ * - Keep slide-specific classes (.hero-slide, .about-slide, etc.) without position properties
+ * - The overlay divs (.slide-overlay) should have position: absolute instead
+ * 
+ * This has been fixed multiple times - please remember this pattern!
+ */
+
+/* Different background gradients for each slide */
+.slide:nth-child(1) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Hero slide with background image */
+.hero-slide {
+    background: url('pictures/hero.png') center/cover no-repeat !important;
+}
+
+/* Intro slide with background image */
+.intro-slide {
+    background: url('pictures/hafnarfjordur.png') center/cover no-repeat !important;
+    background-color: #667eea;
+}
+
+.intro-slide .slide-content {
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+/* Broadcaster check slides */
+.broadcaster-check-slide {
+    background: url('pictures/sjomannaskoli.png') center/cover no-repeat !important;
+    background-color: #f093fb;
+}
+
+.broadcaster-check2-slide {
+    background: url('pictures/skolavorduholt.png') center/cover no-repeat !important;
+    background-color: #43e97b;
+}
+
+.broadcaster-check-slide .slide-content,
+.broadcaster-check2-slide .slide-content {
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+/* Final slide with video */
+.final-slide {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+.final-slide .slide-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.final-slide h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.final-video {
+    width: 90vw;
+    height: 70vh;
+    max-width: 1200px;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    object-fit: contain;
+}
+
+.hero-slide .slide-content {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    max-width: 70%;
+    text-align: left;
+    color: black;
+    background: transparent;
+    padding: 20px;
+}
+
+.hero-slide .slide-content h1 {
+    font-size: 4rem;
+    margin-bottom: 0;
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+    line-height: 1.1;
+    word-wrap: break-word;
+}
+
+.slide:nth-child(2) {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+/* About slide with background image */
+.about-slide {
+    background: url('pictures/me.jpg') center bottom/cover no-repeat !important;
+    background-color: #667eea;
+    position: relative;
+}
+
+.about-slide .slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.about-slide .slide-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+/* Bullet list styling */
+.bullet-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+    max-width: 1000px;
+}
+
+.bullet-item {
+    font-size: 1.8rem;
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #4CAF50;
+    border-radius: 5px;
+    transform: translateX(-100px);
+    opacity: 0;
+    transition: all 0.5s ease;
+    backdrop-filter: blur(5px);
+}
+
+.bullet-item.visible {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.bullet-item::before {
+    content: "→";
+    color: #4CAF50;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* ITiCSE slide with background image */
+.iticse-slide {
+    background: url('pictures/ITiCSE.png') center/cover no-repeat !important;
+    background-color: #4facfe;
+}
+
+.iticse-slide .slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.iticse-slide .slide-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.iticse-slide h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.iticse-layout {
+    display: flex;
+    gap: 3rem;
+    height: 100%;
+    align-items: flex-start;
+}
+
+.papers-section, .results-section {
+    flex: 1;
+    height: 100%;
+}
+
+.papers-section h2, .results-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 0.5rem;
+}
+
+.papers-list {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.6s ease;
+}
+
+.papers-list.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.paper-item {
+    background: rgba(255, 255, 255, 0.15);
+    margin: 1rem 0;
+    padding: 1.2rem;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    border-left: 4px solid #4CAF50;
+}
+
+.paper-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #4CAF50;
+}
+
+.paper-item p {
+    font-size: 1rem;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.results-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.result-item {
+    font-size: 1.4rem;
+    margin: 1.2rem 0;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-left: 4px solid #FF6B6B;
+    border-radius: 8px;
+    transform: translateX(100px);
+    opacity: 0;
+    transition: all 0.5s ease;
+    backdrop-filter: blur(10px);
+}
+
+.result-item.visible {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.result-item::before {
+    content: "✓";
+    color: #FF6B6B;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.slide:nth-child(3) {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.slide:nth-child(4) {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+/* Navigation indicators */
+.slide-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+}
+
+.indicator {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+.indicator:hover {
+    background: rgba(255,255,255,0.8);
+    transform: scale(1.1);
+}
+
+/* Slide counter */
+.slide-counter {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: rgba(0,0,0,0.5);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    backdrop-filter: blur(10px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .slide-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .slide-content p {
+        font-size: 1.2rem;
+    }
+    
+    .slide-image {
+        max-width: 80%;
+        max-height: 50vh;
+    }
+    
+    .image-grid img {
+        max-width: 250px;
+        max-height: 30vh;
+    }
+    
+    .slide-counter {
+        top: 20px;
+        right: 20px;
+        padding: 8px 15px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide-content h1 {
+        font-size: 2rem;
+    }
+    
+    .slide-content p {
+        font-size: 1rem;
+    }
+    
+    .image-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .image-grid img {
+        max-width: 200px;
+        max-height: 25vh;
+    }
+}
+
+/* Loading animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-content {
+    animation: fadeIn 0.6s ease-out;
+}
