@@ -113,7 +113,7 @@ body, html {
 
 /* Hero slide with background image */
 .hero-slide {
-    background: url('pictures/hero.png') center/cover no-repeat !important;
+    background: url('pictures/hero.jpg') center/cover no-repeat !important;
 }
 
 /* Intro slide with background image */
@@ -574,7 +574,6 @@ body, html {
 .about-slide {
     background: url('pictures/me.jpg') center bottom/cover no-repeat !important;
     background-color: #667eea;
-    position: relative;
 }
 
 .about-slide .slide-overlay {
@@ -588,6 +587,28 @@ body, html {
 }
 
 .about-slide .slide-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+/* Jakub slide with background image */
+.jakub-slide {
+    background: url('pictures/Jakub.png') center bottom/cover no-repeat !important;
+    background-color: #667eea;
+}
+
+.jakub-slide .slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.jakub-slide .slide-content {
     position: relative;
     z-index: 2;
     color: white;
