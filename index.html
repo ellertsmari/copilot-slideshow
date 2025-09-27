@@ -8,15 +8,8 @@
 </head>
 <body>
     <div class="slideshow-container">
-        <!-- Slide 1 - New intro slide -->
-        <div class="slide active intro-slide">
-            <div class="slide-content">
-                <h1>Setjum útsendara af stað</h1>
-            </div>
-        </div>
-
-        <!-- Slide 2 - Hero slide -->
-        <div class="slide hero-slide">
+        <!-- Slide 1 - Hero slide -->
+        <div class="slide active hero-slide">
             <div class="slide-content">
                 <h1>Kynning á Microsoft Copilot og öðrum verkfærum tengdum gervigreind </h1>
             </div>
@@ -55,10 +48,26 @@
             </div>
         </div>
 
-        <!-- Slide 5 - Check on broadcaster -->
-        <div class="slide broadcaster-check-slide">
+        <!-- Slide 5 - Question slide -->
+        <div class="slide intro-slide">
             <div class="slide-content">
-                <h1>Skoðum hvernig útsendaranum gengur</h1>
+                <h1>Hver ert þú og hver er þín reynsla af Gervigreind?</h1>
+            </div>
+        </div>
+
+        <!-- Slide 6 - Check on broadcaster -->
+        <div class="slide broadcaster-check-slide">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <h1>Skoðum Copilot og setjum af stað glærugerðar útsendara</h1>
+                <ul class="bullet-list">
+                    <li class="bullet-item" data-index="0">Samantekt á löngum póstum</li>
+                    <li class="bullet-item" data-index="1">Þrír staðir til þess að komast í chat</li>
+                    <li class="bullet-item" data-index="2">Saga samtala</li>
+                    <li class="bullet-item" data-index="3">Búa til útsendara (e. agent)</li>
+                    <li class="bullet-item" data-index="4">Pages</li>
+                    <li class="bullet-item" data-index="5">Höfum ekki aðgang að in-app Copilot</li>
+                </ul>
             </div>
         </div>
 
@@ -185,7 +194,8 @@
                             <p>Ráðleggingar um notkun gervigreindar í kennslu</p>
                         </div>
                         <div class="text-item large">
-                            <p>Tækniskólinn er að vinna að svipuðum ráðleggjingum</p>
+                            <a href="https://tskoli.is/gervigreind-i-skolastarfi/" target="_blank">🏛️ Tækniskólinn - Ráðleggingar</a>
+                            <p>Gæðastjórinn okkar hún Lilja hefur tekið saman sambærilega síðu fyrir Tækniskólann</p>
                         </div>
                         <div class="text-item important large">
                             <p><strong>Útgangspunkturinn er að setja ekki persónugreinanlegar upplýsingar inn í gervigreind</strong></p>
@@ -323,8 +333,8 @@
         }
 
         function nextSlide() {
-            // If we're on slide 3 (about slide) or slide 4 (jakub slide) and there are bullets to show
-            if (currentSlide === 2 || currentSlide === 3) {
+            // If we're on slide 2 (about Smári slide), slide 3 (about Jakub slide), or slide 6 (broadcaster check slide) and there are bullets to show
+            if (currentSlide === 1 || currentSlide === 2 || currentSlide === 4) {
                 const bulletShown = showNextBullet();
                 if (bulletShown) {
                     return; // Stay on current slide, just showed a bullet
